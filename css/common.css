@@ -1,0 +1,380 @@
+/**
+ * wannabit
+ * https://wallet.wannabit.io
+ * Since : 2018.04.03
+ * Author : Lee Song-hyeon
+ * Updated : 2018.04.17
+ */
+
+
+/* Custom
+	========================================================================== */
+html{height: 100%;}
+body{
+	overflow-x: hidden;
+	min-width: 320px;
+	height: 100%;
+	line-height: 1.4;
+	font-size: 14px;
+	font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+}
+/*button{line-height: 1;}*/
+p{word-break: keep-all;}
+.clear:after{content:"";display:block;clear:both;} /* float 해제 */
+.ellipsis{overflow:hidden;white-space:nowrap;text-overflow:ellipsis;} /* 긴 글 생략 */
+/* 팝업 백그라운드 */
+.over-win{visibility:hidden;z-index:1000;position:fixed;top:0;bottom:0;right:0;left:0;background: rgba(41,41,41,0.94);}
+.over-win.open{visibility:visible;}
+/* custam-select */
+.custam-select{z-index: 100;display: inline-block;position: relative;}
+.custam-select > button{width: 140px;height: 30px;padding: 0 14px;border: 1px solid transparent;border-bottom: 0;border-radius: 15px;text-align: left;color: #333;background: #f6f6f8;}
+.custam-select > button > span{float: right;}
+.custam-select > button.on{border-color: #77b1d7;border-radius: 15px 15px 0 0;background: #fff;}
+.custam-select > button:hover{background: #eff6fa;}
+.custam-select > button.on > span{color: #65a7d2;}
+.custam-select > button + ul{display: none;overflow: hidden;position: absolute;left: 0;top: 100%;width: 100%;border: 1px solid #77b1d7;border-top: 0;border-radius: 0 0 15px 15px;background: #ffffff;}
+.custam-select > button + ul > li{height: 30px;line-height: 30px;padding-left: 14px;color: #333;cursor: pointer;}
+.custam-select > button + ul > li:hover{background: #eff6fa;}
+
+
+/*  app
+	========================================================================== */
+#wb-app{}
+.inner{max-width: 1280px;margin: 0 auto;}
+
+
+
+/*  header
+	========================================================================== */
+header{border-bottom: 1px solid #f6f7f8;background: #fbfbfb;}
+.header-inner{position: relative;display: flex;align-items: center;max-width: 1980px;height: 85px;margin: 0 auto;padding: 0 20px;}
+header h1{margin-right: 52px;}
+header h1 img{display: block;}
+nav{flex-grow: 1;}
+nav > button{display: none;border: 1px solid #000;}
+.header-menu{display: flex;justify-content: space-between;}
+/* 언어/코인선택 */
+.wb-config{}
+/* 로그인 */
+.wb-login{}
+.wb-login > button{display: none;border: 1px solid #000;}
+.wb-login input{height: 30px;padding: 0 14px;border: 1px solid transparent;border-radius: 15px;background: #f6f6f8;}
+.wb-login input:focus{border-color: #77b1d7;background-color: #fff;}
+.wb-login input[type="text"]{width: 238px;padding-left: 38px;background-image: url(../img/home/icon_mail.png);background-position: 10px center;background-repeat: no-repeat;}
+.wb-login input[type="text"]:focus{background-image: url(../img/home/icon_mail_on.png);}
+.wb-login input[type="password"]{width: 180px;padding-left: 38px;background-image: url(../img/home/icon_pw.png);background-position: 10px center;background-repeat: no-repeat;}
+.wb-login input[type="password"]:focus{background-image: url(../img/home/icon_pw_on.png);}
+.wb-login input[type="number"]{width: 180px;}
+.wb-login > form button{width: 88px;height: 30px;border-radius: 15px;color: #fff;background: #65a7d2;}
+.wb-login > form button + a{display: inline-block;vertical-align: middle;width: 88px;height: 30px;line-height: 30px;border-radius: 15px;text-align: center;color: #fff;background: #65a7d2;}
+.wb-login > form button:hover{background: #3ce0ec;}
+.wb-login > form button + a:hover{background: #3ce0ec;}
+.wb-login > form{position: relative;}
+.wb-login > form > p{position: absolute;right: 0;top: 100%;margin-top: 6px;text-align: right;font-size: 13px;}
+.wb-login > form > p > a{margin-left: 8px;text-decoration: underline;}
+.wb-login > div > span{margin-right: 6px;font-size: 16px;}
+.wb-login > div > button{width: 88px;height: 30px;border-radius: 15px;color: #fff;background: #65a7d2;}
+.wb-login > div > button:hover{background: #3ce0ec;}
+
+/*  main
+	========================================================================== */
+main{}
+main > h2{padding: 46px 0;border-bottom: 1px solid #e8e9e9;text-align: center;font-size: 33px;color: #015c8b;}
+main > h2 > span{color: #4586b1;}
+main > h2 > img{vertical-align: text-bottom;margin-right: 16px;}
+/* 인증수단 선택 */
+.acces-select-wrap{position: relative;box-shadow: 0px 3px 7px 0px rgba(202,202,202,0.4);background: #fdfdfd;}
+.acces-select-cont{padding: 34px 0 56px;text-align: center;}
+.acces-select-cont > h3{margin-bottom: 50px;font-size: 22px;color: #919092;font-weight: 600;}
+.acces-select-list{overflow: hidden;display: inline-block;margin-bottom: 52px;}
+.acces-select-list > li{float: left;margin: 0 34px;}
+.acces-select-list > li > button{color: #4f4f50;font-size: 18px;}
+.acces-select-list > li > button:hover{text-decoration: underline;}
+.acces-select-list > li > button > img{display: block;margin-bottom: 22px;}
+.acces-select-cont > p{width: 704px;margin: 0 auto;text-align: left;color: #4e4e4e;}
+
+/* 중앙 컨텐츠 공통 */
+.home-section-wrap{background: #eaebeb;}
+.home-section-cont{width: 94%;max-width: 1280px;margin: 0 auto;padding: 35px 0;}
+.home-section-cont section{margin-bottom: 30px;padding: 30px 38px;box-shadow: 0px 0px 5px 1px rgba(193,193,193,0.3);border-radius: 10px;background: #ffffff;}
+.home-section-cont section.lg{}
+.home-section-cont section.md{width: 750px;margin-right: 24px;}
+.home-section-cont section.sm{width: 506px;}
+.home-section-cont > div{display: flex;justify-content: space-between;align-items: stretch;}
+
+/* 내 지갑 관리 */
+.manage-wallet{}
+.home-section-hdr{position: relative;display: flex;align-items: center;}
+.home-section-hdr > h3{margin-right: 14px;font-size: 18px;color: #373738;font-weight: 400;}
+.help-tooltip-wrap{position: relative;margin-right: 20px;}
+.help-tooltip-wrap > button{}
+.help-tooltip-wrap > div{display: none;position: absolute;bottom: 100%;left: -32px;width: 374px;height: 124px;padding: 14px 16px 0;color: #fff;background: url(../img/home/tooltip_box.png);}
+.help-tooltip-wrap > div > p{margin-top: 14px;font-size: 12px;}
+.help-tooltip-wrap > div > button{position: absolute;right: 16px;top: 12px;font-size: 16px;color: #fff;}
+.home-section-hdr > button.btn-otp-contr{width: 90px;height: 33px;background: url(../img/home/btn_otp_off.png);}
+.home-section-hdr > button.btn-otp-contr.on{background-image: url(../img/home/btn_otp_on.png);}
+.home-section-hdr > button.btn-dropdown{position: absolute;right: 0;}
+/*.home-section-hdr > button.btn-refresh{position: absolute;right: 0;}*/
+
+/* otp on */
+.mw-otp-on{padding: 20px 0;}
+.mw-otp-on > p{margin-bottom: 20px;color: #4e4e4e;line-height: 1.6;}
+.mw-otp-on-cont{display: flex;justify-content: center;align-items: center;}
+.mw-otp-on-cont > div{margin-right: 50px;text-align: center;}
+.mw-otp-on-cont > div > div{margin-bottom: 18px;width: 140px;height: 140px;border-radius: 50%;border: 17px solid rgba(101,167,210,0.1);}
+.mw-otp-on-cont > div img{display: block;margin: 16px auto 0;}
+.mw-otp-on-cont > div span{font-size: 15px;color: #585858;}
+.mw-otp-on-cont > form{}
+.mw-otp-on-cont > form > input{width: 263px;height: 40px;margin-right: 4px;padding: 0 14px;border: 1px solid transparent;border-radius: 20px;background: #f6f6f8;}
+.mw-otp-on-cont > form > input:focus{border-color: #77b1d7;background: #fff;}
+.mw-otp-on-cont > form > button{width: 100px;height: 40px;border-radius: 20px;color: #fff;background: #65a7d2;}
+.mw-otp-on-cont > form > button:hover{background: #3ce0ec;}
+.mw-otp-on-cont > form > div{display: flex;align-items: center;margin-top: 23px;}
+.mw-otp-on-cont > form > div > span{margin-right: 25px;color: #4e4e4e;}
+.mw-otp-on-cont > form > div > a{display: inline-block;width: 100px;height: 28px;line-height: 28px;margin-right: 8px;border-radius: 14px;text-align: center;color: #fff;background: #65a7d2;}
+.mw-otp-on-cont > form > div > a:hover{background: #3ce0ec;}
+
+/* otp off */
+.mw-otp-off{padding: 20px 0;}
+.mw-otp-off > p{margin-bottom: 20px;color: #4e4e4e;line-height: 1.6;}
+.mw-otp-off > p > strong{font-weight: 500;}
+.mw-otp-off > p > strong > a{text-decoration: underline;}
+.mw-otp-off > form{text-align: center;}
+.mw-otp-off > form > input{width: 300px;height: 40px;padding: 0 14px;border: 1px solid transparent;border-radius: 20px;background: #f6f6f8;}
+.mw-otp-off > form > input:focus{border-color: #77b1d7;background: #fff;}
+.mw-otp-off > form > button{width: 100px;height: 40px;margin-left: 10px;border-radius: 20px;color: #fff;background: #65a7d2;}
+.mw-otp-off > form > button:hover{background: #3ce0ec;}
+
+/* 지갑 목록 */
+.mw-fav-wallet{padding: 20px 0;}
+.mw-fav-wallet > form{overflow: hidden;}
+.mw-fav-wallet > form > input{width: calc(100% - 110px);height: 40px;padding: 0 14px;border: 1px solid transparent;border-radius: 20px;background: #f6f6f8;}
+.mw-fav-wallet > form > input:focus{border-color: #77b1d7;background: #fff;}
+.mw-fav-wallet > form > button{float: right;width: 100px;height: 40px;border-radius: 20px;color: #fff;background: #65a7d2;}
+.mw-fav-wallet > form > button:hover{background: #3ce0ec;}
+.mw-fav-wallet > p{margin: 20px 0;color: #4e4e4e;line-height: 1.6;}
+.fav-wallet-table-wrap{overflow-x: auto;}
+.fav-wallet-table{table-layout: fixed;width: 100%;border-collapse: separate;border-spacing: 0 10px;margin-bottom: 26px;font-size: 15px;}
+.fav-wallet-table col:nth-child(1){width: 186px;}
+.fav-wallet-table col:nth-child(2){width: 420px;}
+.fav-wallet-table col:nth-child(3){width: 160px;}
+.fav-wallet-table col:nth-child(4){width: 240px;}
+.fav-wallet-table col:nth-child(5){width: 120px;}
+.fav-wallet-table td{padding: 0 10px;height: 44px;border: 1px solid #f2f2f2;border-style: solid none solid none;color: #818082;font-weight: 600;}
+.fav-wallet-table td:first-child{border-style: solid none solid solid;border-radius: 10px 0 0 10px;}
+.fav-wallet-table td:last-child{border-style: solid solid solid none;border-radius: 0 10px 10px 0;}
+.fav-wallet-table td:nth-child(1){font-size: 12px;}
+.fav-wallet-table td:nth-child(2) > button{color: #818082;}
+.fav-wallet-table td:nth-child(2) > button:hover{text-decoration: underline;}
+.fav-wallet-table td:nth-child(3){padding-left: 52px;color: #a9ccdf;}
+.fav-wallet-table td:nth-child(4){text-align: right;}
+.fav-wallet-table td:nth-child(4) > span{margin-left: 8px;color: #bfc2ce;}
+.fav-wallet-table td:nth-child(5){text-align: center;}
+.fav-wallet-table td:nth-child(6) > button{margin: 0 2px;}
+.fav-wallet-table td.mne{background: url(../img/home/acces_icon_sm_01.png) no-repeat 20px center;}
+.fav-wallet-table td.pri{background: url(../img/home/acces_icon_sm_02.png) no-repeat 20px center;}
+.fav-wallet-table td.led{background: url(../img/home/acces_icon_sm_03.png) no-repeat 20px center;}
+.fav-wallet-table td > input{display: inline-block;vertical-align: middle;width: 130px;height: 28px;padding: 0 6px;border: 1px solid #e6e6e6;background: #f6f6f8;}
+.fav-wallet-table td > input:focus{border-color: #77b1d7;background: #fff;}
+.fav-wallet-table td > input + button{display: inline-block;vertical-align: middle;height: 28px;padding: 0 4px;color: #fff;background: #65a7d2;}
+.table-pager{text-align: center;margin-bottom: 20px;}
+.table-pager > div{display: inline-block;vertical-align: middle;}
+.table-pager > div > button{padding: 0 10px;}
+.table-pager button{color: #5e5e5e;}
+.table-pager button:hover{color: #65a7d2;}
+.table-pager > button{display: inline-block;vertical-align: middle;width: 24px;height: 24px;margin: 0 2px;border-radius: 50%;background-color: #e5e5e5;background-repeat: no-repeat;background-position: 49% center;}
+.table-pager > button:hover{background-color: #8ac4ea;}
+.table-pager > button.first, .table-pager > button.last{background-image: url(../img/home/arr_right_doub.png);}
+.table-pager > button.prev, .table-pager > button.next{background-image: url(../img/home/arr_right.png);}
+.table-pager > button.next, .table-pager > button.last{transform: rotate(180deg);}
+
+/* 송금 */
+/* 선택지갑 */
+.from-wallet{padding: 20px 0 50px;font-size: 15px;}
+.from-wallet > strong{font-size: 24px;color: #919092;}
+.from-wallet > p{margin-bottom: 6px;color: #8e8e8e;}
+.from-wallet > input{width: 100%;height: 40px;padding: 0 14px;border: 1px solid #e9e9e9;border-radius: 20px;color: #65a7d2;}
+/* 송금 정보 */
+.transfer-form h4{margin-bottom: 20px;font-size: 17px;color: #919092;}
+.transfer-form{}
+.transfer-form input{height: 40px;padding: 0 14px;border: 1px solid transparent;border-radius: 20px;background: #f6f6f8;}
+.transfer-form input:not([readonly]):focus{border-color: #77b1d7;background: #fff;}
+.transfer-to-wallet{margin-bottom: 50px;}
+.transfer-to-wallet > input{width: 100%;}
+.transfer-to-wallet > div{display: flex;justify-content: space-between;margin-top: 12px;}
+.transfer-to-wallet > div > input{flex-grow: 1;margin-right: 12px;}
+.transfer-to-wallet > div > button{width: 94px;height: 40px;margin-left: 12px;border-radius: 20px;color: #fff;background: #c3c3c5;}
+.transfer-to-wallet > div > button:hover{background: #8ac4ea;}
+.transfer-to-wallet > div > .custam-select{margin-bottom: 25px;}
+.transfer-to-wallet > div > .custam-select > button{height: 40px;border-radius: 20px;}
+.transfer-to-wallet > div > .custam-select > button.on{border-radius: 20px 20px 0 0;}
+.transfer-to-wallet > div > .custam-select > button + ul{border-radius: 0 0 20px 20px}
+.transfer-to-wallet > div > .custam-select > button + ul > li{height: 40px;line-height: 40px}
+.transfer-to-wallet > p{color: #d6d6d6;}
+.transfer-fee-coin{position: relative;margin-bottom: 50px;}
+.transfer-fee-coin > span{position: absolute;right: 0;top : 0;font-size: 13px;color: #c3c3c5;}
+.transfer-fee-coin > input[type="range"]{-webkit-appearance: none;width: 100%;height: 10px;border-radius: 4px;background: #ebebeb;outline: none;opacity: 0.8;-webkit-transition: .2s;transition: opacity .2s;padding: 0;}
+.transfer-fee-coin > input[type="range"]:hover{opacity: 1;}
+.transfer-fee-coin > input[type="range"]:focus{border-color: transparent;background: #ebebeb;}
+.transfer-fee-coin > input[type="range"]::-webkit-slider-thumb{-webkit-appearance: none;appearance: none;width: 26px;height: 26px;border-radius: 50%;border: 8px solid #65a7d2;background: #fff;cursor: pointer;}
+.transfer-fee-coin > input[type="range"]::-moz-range-thumb{width: 25px;height: 25px;border-radius: 50%;background: #4CAF50;cursor: pointer;}
+.transfer-fee-coin > div{display: flex;justify-content: space-between;margin: 8px 0 20px;}
+.transfer-fee-coin > p{font-size: 13px;line-height: 1.5;}
+.transfer-fee-token{margin-bottom: 50px;}
+.transfer-fee-token > div{float: left;width: 49%;margin-bottom: 16px;}
+.transfer-fee-token > div:last-of-type{float: right;}
+.transfer-fee-token > div > input{display: block;width: 100%;margin-top: 10px;}
+.transfer-fee-token > p{clear: both;font-size: 13px;line-height: 1.5;}
+.transfer-total{overflow: hidden;}
+.transfer-total > input{width: calc(100% - 200px);}
+.transfer-total > button{float: right;width: 194px;height: 40px;border-radius: 20px;color: #fff;background: #65a7d2;}
+.transfer-total > button:hover{background: #3ce0ec;}
+
+/* 토큰 */
+.manage-token{position: relative;}
+.manage-token > label{position: absolute;right: 38px;top: 40px;}
+.manage-token > label > input{margin-right: 4px;}
+.manage-token-sch-form{margin-top: 20px;}
+.manage-token-sch-form > input{width: 100%;height: 40px;padding: 0 14px;border: 1px solid transparent;border-radius: 20px;background: #f6f6f8;}
+.manage-token-sch-form > input:focus{border-color: #77b1d7;background: #fff;}
+.manage-token-blank{display: none;padding: 100px 0 10px;text-align: center;}
+.manage-token-blank > button{width: 160px;height: 160px;font-size: 100px;border: 8px solid #e9e9e9;border-radius: 50%;color: #e9e9e9;}
+.manage-token-blank > button:hover{border-color: #65a7d2;color: #65a7d2;}
+.manage-token-blank > p{margin-top: 42px;color: #929495;line-height: 1.6;}
+.manage-token-fav{}
+.fav-token-table-wrap{overflow-y: auto;margin: 10px 0;max-height: 700px;}
+.fav-token-table{table-layout: fixed;width: 100%;border-collapse: separate;border-spacing: 0 10px;padding-right: 6px;font-size: 15px;}
+.fav-token-table col:nth-child(1){width: 54px;}
+.fav-token-table col:nth-child(2){width: 170px;}
+.fav-token-table col:nth-child(3){width: 125px;}
+.fav-token-table col:nth-child(4){width: 50px;}
+.fav-token-table td{padding: 0 4px;height: 44px;border: 1px solid #f2f2f2;border-style: solid none solid none;color: #b5b5b5;}
+.fav-token-table td:first-child{border-style: solid none solid solid;border-radius: 10px 0 0 10px;}
+.fav-token-table td:last-child{border-style: solid solid solid none;border-radius: 0 10px 10px 0;}
+.fav-token-table td:nth-child(1){text-align: center;}
+.fav-token-table td:nth-child(2){}
+.fav-token-table td:nth-child(3){color: #7d7d7d;}
+.fav-token-table td:nth-child(4){text-align: center;}
+.manage-token-fav > button{}
+.manage-token-fav > button > img{margin-right: 6px;vertical-align: middle;}
+
+
+/* 송금 내역 */
+.manage-transfer{padding: 20px 0;}
+.manage-transfer > p{margin: 20px 0;color: #4e4e4e;line-height: 1.6;}
+.transfer-table-wrap{overflow-x: auto;}
+.transfer-table{table-layout: fixed;width: 100%;border-collapse: separate;border-spacing: 0 10px;margin-bottom: 40px;font-size: 15px;}
+.transfer-table col:nth-child(1){width: 60px;}
+.transfer-table col:nth-child(2){width: 570px;}
+.transfer-table col:nth-child(3){width: 200px;}
+.transfer-table col:nth-child(4){width: 180px;}
+.transfer-table col:nth-child(5){width: 110px;}
+.transfer-table td{padding: 0 12px;height: 60px;border: 1px solid #f2f2f2;border-style: solid none solid none;color: #818082;}
+.transfer-table td:first-child{border-style: solid none solid solid;border-radius: 30px 0 0 30px;}
+.transfer-table td:last-child{border-style: solid solid solid none;border-radius: 0 30px 30px 0;}
+.transfer-table td:nth-child(1) > span{display: block;width: 42px;height: 42px;line-height: 42px;border-radius: 50%;text-align: center;font-size: 18px;color: #fff;background: #eeeeee;}
+.transfer-table td:nth-child(2) > button{color: #65a7d2;}
+.transfer-table td:nth-child(2) > button:hover{text-decoration: underline;}
+.transfer-table td:nth-child(3){text-align: right;}
+.transfer-table td:nth-child(3) > span{margin-left: 8px;color: #bfc2ce;}
+.transfer-table td:nth-child(4){text-align: center;}
+.transfer-table td:nth-child(5){text-align: center;}
+.transfer-table td.ing{color: #65a7d2;}
+.transfer-table td.complete{color: #d3d3d3;}
+
+
+
+/*  footer
+	========================================================================== */
+footer{padding: 45px 0;color: #fff;text-align: center;font-weight: 300;background: #4c5160;}
+footer > a:hover{text-decoration: underline;}
+footer > a:first-child{margin-left: 16px;}
+footer > span{margin-left: 30px;}
+.qna-wrap{display: none;z-index: 100;position: fixed;bottom: 120px;right: 20px;}
+.qna-wrap > button.qna{z-index: 200;width: 100px;height: 100px;background: url(../img/home/btn_qa.png);background-size: 100% 100%;}
+.qna-wrap > button.qna:hover{background-image: url(../img/home/btn_qa_over.png);}
+
+
+
+
+
+
+
+
+/* Media query
+	========================================================================== */
+@media only screen and (max-width: 1200px){
+	/* header */
+	nav{display: flex;justify-content: flex-end;}
+	nav > button{display: block;}
+	.header-menu{z-index: 200;display: block;position: absolute;top: 100%;left: 0;width: 100%;padding: 10px;border-top: 1px solid #f6f7f8;background: #fbfbfb;}
+	.wb-config{display: flex;justify-content: space-between;}
+	.wb-config > div{width: 49.5%;}
+	.wb-config > div > button{width: 100%;}
+	.wb-login{margin-top: 10px;}
+	.wb-login > form{display: flex;justify-content: space-between;flex-wrap: wrap;}
+	.wb-login > form.wb-login-acc-form > p{top: auto;bottom: 4px;}
+	.wb-login > form.wb-login-acc-form > input{width: 40%;}
+	.wb-login > form.wb-login-acc-form > button{width: 17%;}
+	.wb-login > form.wb-login-acc-form > a{margin-top: 10px;}
+	.wb-login > form.wb-login-otp-form > input{width: 56%;}
+	.wb-login > form.wb-login-otp-form > button{width: 21%;}
+	.wb-login > div{text-align: right;}
+	/* 메인컨텐츠 */
+	.home-section-cont{}
+}
+
+@media only screen and (max-width: 800px){
+	/* 인증수단 선택 */
+	.acces-select-cont > h3{margin-bottom: 30px;}
+	.acces-select-cont{padding: 34px 20px 56px;}
+	.acces-select-list{display: block;margin-bottom: 34px;}
+	.acces-select-list > li{width: 25%;margin: 0;}
+	.acces-select-list > li > button{font-size: 14px;}
+	.acces-select-list > li > button > img{width: 80px;margin: 0 auto 4px;}
+	.acces-select-cont > p{width: 100%;font-size: 13px;}
+}
+
+
+@media only screen and (max-width: 720px){
+	/* section 공통 */
+	.home-section-cont section{padding: 18px 20px;}
+	/* 지갑관리 */
+	.mw-otp-on-cont{display: block;text-align: center;}
+	.mw-otp-on-cont > div{margin-right: 0;margin-bottom: 20px;}
+	.mw-otp-on-cont > div > div{margin: 0 auto 6px;}
+	.mw-otp-on-cont > form > div{display: block;}
+	.mw-otp-on-cont > form > input{width: calc(100% - 114px);}
+	.mw-otp-off > form > input{width: calc(100% - 114px);}
+
+}
+
+
+@media only screen and (max-width: 640px){
+	.home-section-hdr > h3{font-size: 16px;}
+	
+}
+
+
+@media only screen and (max-width: 500px){
+	/* 인증수단 선택 */
+	.acces-select-list > li{width: 50%;margin-bottom: 20px;}
+	/* 지갑관리 */
+	.mw-otp-on-cont > form > div > span{display: block;margin-right: 0;margin-bottom: 8px;}
+}
+
+
+
+	
+
+@media only screen and (max-width: 640px){
+
+}
+
+@media only screen and (max-width: 360px){
+
+}
+
+@media only screen and (max-width: 320px){
+
+}

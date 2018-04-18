@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<title>wannabit</title>
+		<meta charset="UTF-8">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="viewport" content="width=device-width">
+		<!-- css -->
+		<link rel="stylesheet" href="css/normalize.custom.css">
+		<link rel="stylesheet" href="css/common.css">
+		<!-- js -->
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	</head>
+	<body>
+		<div id="wb-app">
+
+			<header>
+				<div class="header-inner">
+					
+					<!-- 로고 -->
+					<h1><a href="#!"><img src="img/home/logo_wb.png" alt="wannabit"></a></h1>
+
+					<nav>
+						<button type="btn-header-nav">메뉴</button>
+						<div class="header-menu">
+							<!-- 언어/코인 -->
+							<div class="wb-config">
+								<!-- 언어 select -->
+								<div class="custam-select">
+									<button type="button">한국어<span>&#9207;</span></button>
+									<ul>
+										<li>English</li>
+										<li>中文</li>
+									</ul>
+								</div><!-- custam-select end -->
+								<!-- 코인 select -->
+								<div class="custam-select">
+									<button type="button">QTUM<span>&#9207;</span></button>
+									<ul>
+										<li>ETH</li>
+									</ul>
+								</div><!-- custam-select end -->
+							</div><!-- wb-config end -->
+						
+							<!-- 로그인 -->
+							<div class="wb-login">
+								<!-- 이메일/비밀번호 -->
+								<form class="wb-login-acc-form">
+									<input type="text" placeholder="이메일 입력">
+									<input type="password" placeholder="비밀번호 입력">
+									<button type="button">Login</button>
+									<a href="#!">회원가입</a>
+									<p>비밀번호를 잊으셨나요?<a href="#!">비밀번호 찾기</a></p>
+								</form>
+								<!-- otp -->
+								<form class="wb-login-otp-form" style="display: none;">
+									<input type="number" placeholder="OTP 인증번호 입력">
+									<button type="button">확인</button>
+									<button type="button">취소</button>
+								</form>
+								<!-- 로그인 완료 -->
+								<div style="display: none;">
+									<span>suzie@wannabit.io</span>
+									<button type="button">로그아웃</button>
+								</div>
+							</div><!-- wb-login end -->
+						</div><!-- header-menu end -->
+					</nav>
+
+				</div><!-- header-inner end -->
+			</header>
+
+			<main>
+				<h2><img src="img/home/tok_icon.png" alt="">QTUM <span>지갑</span></h2>
+			
+				<!-- 인증수단 선택 -->
+				<div class="acces-select-wrap">
+					<div class="acces-select-cont">
+						<h3>인증수단 선택</h3>
+						<ul class="acces-select-list">
+							<li><button type="button"><img src="img/home/acces_icon01.png" alt="">Mnemonics</button></li>
+							<li><button type="button"><img src="img/home/acces_icon02.png" alt="">Private Key</button></li>
+							<li><button type="button"><img src="img/home/acces_icon03.png" alt="">Ledger</button></li>
+							<li><button type="button"><img src="img/home/acces_icon04.png" alt="">New Wallet</button></li>
+						</ul>
+						<p>* 현재 새 지갑 생성은 mnemonics으로만 가능합니다.<br>* 기존 보유 중인 지갑의 정보 확인 및 QTUM 송금 / 토큰 송금을 이용해주세요.<br>* 단, Ledger의 경우 Ledger api와 퀀텀 네트워크의 호환성 문제로 토큰 송금은 불가합니다. (QTUM 정상 송금 가능)</p>
+						<!-- 팝업 -->
+					</div><!-- acces-select-cont end -->
+				</div><!-- acces-select-wrap end -->
+			
+				<!-- 중앙 컨텐츠 -->
+				<div class="home-section-wrap">
+					<div class="home-section-cont">
+						<!-- 내 지갑 관리 -->
+						<section class="manage-wallet">
+							<!-- 지갑 관리 header -->
+							<div class="home-section-hdr">
+								<h3>내 지갑 관리</h3>
+								<div class="help-tooltip-wrap">
+									<button type="button" class="btn-help"><img src="img/home/icon_help.png" alt="도움말"></button>
+									<div>
+										<span>내 지갑관리란?</span>
+										<p>자주 사용하는 지갑 정보를 미리 등록하여 잔액 확인과<br>송금을 빠르고 편리하게 이용할 수 있습니다. 등록된<br>지갑 주소로 송금시 보안을 위해 OTP 인증이 필요합니다.</p>
+										<button type="button">&#10005;</button>
+									</div>
+								</div><!-- help-tooltip-wrap end -->
+								<button type="button" class="btn-otp-contr"></button>
+								<button type="button" class="btn-dropdown"><img src="img/home/arr_down.png" alt=""></button>
+								<script>
+									$('.btn-otp-contr').on('click', function(){
+										$(this).toggleClass('on');
+									})
+								</script>
+							</div><!-- home-section-hdr end -->
+							<!-- otp 설정 -->
+							<div class="mw-otp-on">
+								<p>* OTP 인증 후 사용하실 수 있습니다.<br>* OTP 인증 방법 : OTP 앱 설치 > QR 코드 스캔 또는 key 입력 > 2FA 코드 입력</p>
+								<div class="mw-otp-on-cont">
+									<!-- qr 이미지 -->
+									<div>
+										<div><img src="img/home/otp_qr.png" alt=""></div>
+										<span>QOVHAPI23J3E3E4V</span>
+									</div>
+									<!-- 입력 -->
+									<form>
+										<input type="text" placeholder="2FA 코드입력">
+										<button type="button">인증하기</button>
+										<div>
+											<span>* OTP APP Download</span>
+											<a href="#!">IOS</a>
+											<a href="#!">Android</a>
+										</div>
+									</form>
+								</div>
+							</div><!-- mw-otp-on end -->
+							<!-- otp 해제 -->
+							<div class="mw-otp-off">
+								<p>* OTP 인증 후 해지하실 수 있으며, 내 지갑 관리 목록은 모두 삭제됩니다. (지갑 연결 후 조회/송금은 정상 사용 가능)<br><strong>* 휴대폰을 분실하셨을 경우 <a href="mailto:help@wannabit.io">help@wannabit.io</a>로 문의주시기 바랍니다.</strong></p>
+								<form>
+									<input type="text" placeholder="2FA 코드입력">
+									<button type="button">OTP 해지</button>
+								</form>
+							</div><!-- mw-otp-off end -->
+							<!-- 지갑 목록 -->
+							<div class="mw-fav-wallet">
+								<form>
+									<input type="text" placeholder="퀀텀 지갑 주소를 검색하세요.">
+									<button type="button">검색</button>
+								</form>
+								<p>* QTUM 주소 선택 시, 해당 주소로 코인/토큰 송금이 가능합니다.</p>
+								<div class="fav-wallet-table-wrap">
+									<table class="fav-wallet-table">
+										<colgroup>
+											<col>
+											<col>
+											<col>
+											<col>
+											<col>
+										</colgroup>
+										<tbody>
+											<tr>
+												<td><input type="text" placeholder="별칭을 등록하세요."><button type="button">편집</button></td>
+												<td><button type="button">QS2iTedipBG8rnTmMMLQ2vuc7Ve1qudgW</button></td>
+												<td class="led">Ledger</td>
+												<td>15.25000345<span>QTUM</span></td>
+												<td>
+													<button type="button"><img src="img/home/icon_copy.png" alt="주소복사"></button>
+													<button type="button"><img src="img/home/icon_more.png" alt="상세거래내역"></button>
+													<button type="button"><img src="img/home/icon_del.png" alt="삭제"></button>
+												</td>
+											</tr>
+											<tr>
+												<td><input type="text" placeholder="별칭을 등록하세요."><button type="button">편집</button></td>
+												<td><button type="button">QS2iTedipBG8rnTmMMLQ2vuc7Ve1qudgW</button></td>
+												<td class="mne">Mnemonics</td>
+												<td>54647.25000345<span>QTUM</span></td>
+												<td>
+													<button type="button"><img src="img/home/icon_copy.png" alt="주소복사"></button>
+													<button type="button"><img src="img/home/icon_more.png" alt="상세거래내역"></button>
+													<button type="button"><img src="img/home/icon_del.png" alt="삭제"></button>
+												</td>
+											</tr>
+											<tr>
+												<td><input type="text" placeholder="별칭을 등록하세요."><button type="button">편집</button></td>
+												<td><button type="button">QS2iTedipBG8rnTmMMLQ2vuc7Ve1qudgW</button></td>
+												<td class="pri">Private Key</td>
+												<td>15.25000345<span>QTUM</span></td>
+												<td>
+													<button type="button"><img src="img/home/icon_copy.png" alt="주소복사"></button>
+													<button type="button"><img src="img/home/icon_more.png" alt="상세거래내역"></button>
+													<button type="button"><img src="img/home/icon_del.png" alt="삭제"></button>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+									<div class="table-pager">
+										<button type="button" class="first"></button>
+										<button type="button" class="prev"></button>
+										<div>
+											<button type="button">1</button>
+											<button type="button">2</button>
+											<button type="button">3</button>
+											<button type="button">4</button>
+											<button type="button">5</button>
+											<button type="button">6</button>
+											<button type="button">7</button>
+										</div>
+										<button type="button" class="next"></button>
+										<button type="button" class="last"></button>
+									</div>
+								</div><!-- fav-wallet-table-wrap end -->
+							</div><!-- mw-fav-wallet end -->
+						</section><!-- manage-wallet end -->
+						
+						<div>
+							<!-- 코인/토큰 송금 -->
+							<section class="transfer md">
+								<!-- 송금 header -->
+								<div class="home-section-hdr">
+									<h3>코인/토큰 송금</h3>
+									<button type="button" class="btn-refresh"><img src="img/home/icon_ref.png" alt=""></button>
+								</div><!-- home-section-hdr end -->
+								<!-- 선택 지갑 -->
+								<div class="from-wallet">
+									<strong>121344.11213 QTUM</strong>
+									<p>사용가능금액 : 121344.11213 QTUM</p> 
+									<input type="text" readonly value="QS2iTedipBG8rnTmMMLQ2vuc7Ve1qudgWy">
+								</div><!-- from-wallet end -->
+								<!-- 송금 정보 -->
+								<form class="transfer-form">
+									<!-- 정보 입력 -->
+									<div class="transfer-to-wallet">
+										<h4>송금정보 입력</h4>
+										<input type="text" placeholder="송금 받을 주소를 입력하세요.">
+										<div>
+											<input type="number" placeholder="금액을 입력하세요.">
+											<!-- 코인/토큰 select -->
+											<div class="custam-select">
+												<button type="button">QTUM<span>&#9207;</span></button>
+												<ul>
+													<li>wan</li>
+													<li>lasw</li>
+												</ul>
+											</div><!-- custam-select end -->
+											<button type="button">최대수량</button>
+										</div>
+										<p>Ledger의 경우 Ledger api와 퀀텀 네트워크의 호환성 문제로 토큰 송금은 불가합니다.<br>(QTUM 정상 송금 가능)</p>
+									</div><!-- transfer-to-wallet end -->
+									<!-- 수수료 (코인) -->
+									<div class="transfer-fee-coin">
+										<h4>트랜젝션 수수료</h4>
+										<span>송금수수료 : 0.01 QTUM</span>
+										<input type="range" min="1" max="3" value="2">
+										<div><span>Low</span><span>Standard</span><span>High</span></div>
+										<p>* 차감 수수료 : 0.004 QTUM<br>* 토큰을 전송하기 위해 <strong>0.1 QTUM</strong>이 수량에 추가되어야합니다.</p>
+									</div>
+									<!-- 수수료 (토큰) -->
+									<div class="transfer-fee-token">
+										<h4>트랜젝션 수수료</h4>
+										<div>
+											<label for="gasprice">Gas Price</label>
+											<input type="number" value="40" id="gasprice" readonly>
+										</div>
+										<div>
+											<label for="gaslimit">Gas Limit</label>
+											<input type="number" value="25000000" id="gaslimit" readonly>
+										</div>
+										<p>* 차감 수수료 : 0.1 QTUM<br>* 토큰을 전송하기 위해 <strong>0.1 QTUM</strong>이 수량에 추가되어야합니다</p>
+									</div>
+									<!-- 최종수량 -->
+									<div class="transfer-total">
+										<h4>최종 수량</h4>
+										<input type="number" readonly value="152.2342342">
+										<button type="button">트랜젝션 생성</button>
+									</div>
+								</form>
+							</section>
+
+							<!-- 토큰 -->
+							<section class="manage-token sm">
+								<!-- 토큰 header -->
+								<div class="home-section-hdr">
+									<h3>토큰</h3>
+									<button type="button" class="btn-refresh"><img src="img/home/icon_ref.png" alt=""></button>
+								</div><!-- home-section-hdr end -->
+								<label for="hastoken"><input type="checkbox" id="hastoken">보유토큰만 표시하기</label>
+								<form class="manage-token-sch-form">
+									<input type="text" placeholder="토큰명 또는 심볼명 검색">
+								</form>		
+								<!-- 관심 토큰 없을 경우 -->
+								<div class="manage-token-blank">
+									<button type="button">&#43;</button>
+									<p>관심 토큰이 없습니다.<br>추가 가능한 토큰을 확인해보세요.</p>
+								</div>
+								<!-- 보유 토큰 없을 경우 -->
+								<div class="manage-token-blank">
+									<button type="button">&#43;</button>
+									<p>보유 토큰이 없습니다.<br>추가 가능한 토큰을 확인해보세요.</p>
+								</div>
+								<!-- 토큰 리스트 -->
+								<div class="manage-token-fav">
+									<div class="fav-token-table-wrap">
+										<table class="fav-token-table">
+											<colgroup>
+												<col>
+												<col>
+												<col>
+												<col>
+											</colgroup>
+											<tbody>
+												<tr>
+													<td><img src="img/home/dm_token.png" alt=""></td>
+													<td>QBT(QBT)</td>
+													<td>11</td>
+													<td>
+														<button type="button"><img src="img/home/icon_del.png" alt="삭제"></button>
+													</td>
+												</tr>
+												<tr>
+													<td><img src="img/home/dm_token.png" alt=""></td>
+													<td>MED TOKEN(MED)</td>
+													<td>2</td>
+													<td>
+														<button type="button"><img src="img/home/icon_del.png" alt="삭제"></button>
+													</td>
+												</tr>
+											</tbody>
+										</table><!-- fav-token-table end -->
+									</div><!-- fav-token-table-wrap end -->
+									<button type="button" class="btn-item-add"><img src="img/home/icon_add.png" alt="">토큰 추가하기</button>
+								</div>
+							</section>
+						</div>
+
+						<!-- 송금 내역 -->
+						<section class="manage-transfer">
+							<!-- 송금내역 header -->
+							<div class="home-section-hdr">
+								<h3>송금 내역</h3>
+								<button type="button" class=""><img src="img/home/icon_ref.png" alt=""></button>
+							</div><!-- home-section-hdr end -->
+							<p>* txid를 클릭하면 트랜잭션 상세정보 확인이 가능합니다.</p>
+							<div class="transfer-table-wrap">
+								<table class="transfer-table">
+									<colgroup>
+										<col>
+										<col>
+										<col>
+										<col>
+										<col>
+									</colgroup>
+									<tbody>
+										<tr>
+											<td><span>2</span></td>
+											<td><button type="button">409017ebfee0fd47034c4ab679d347b727e12b5325b755a346799661c0b00c3f</button></td>
+											<td>15.25000345<span>QTUM</span></td>
+											<td>2018-04-05 11:05:23</td>
+											<td class="ing">진행중</td>
+										</tr>
+										<tr>
+											<td><span>1</span></td>
+											<td><button type="button">409017ebfee0fd47034c4ab679d347b727e12b5325b755a346799661c0b00c3f </button></td>
+											<td>15.25000345<span>QTUM</span></td>
+											<td>2018-04-05 11:05:00</td>
+											<td class="complete">송금완료</td>
+										</tr>
+									</tbody>
+								</table>
+								<div class="table-pager">
+									<button type="button" class="first"></button>
+									<button type="button" class="prev"></button>
+									<div>
+										<button type="button">1</button>
+										<button type="button">2</button>
+										<button type="button">3</button>
+										<button type="button">4</button>
+										<button type="button">5</button>
+										<button type="button">6</button>
+										<button type="button">7</button>
+									</div>
+									<button type="button" class="next"></button>
+									<button type="button" class="last"></button>
+								</div>
+							</div><!-- transfer-table-wrap end -->
+						</section>
+					</div><!-- home-section-cont end -->
+				</div><!-- home-section-wrap end -->
+			</main>
+
+			<footer>
+				<div class="qna-wrap">
+					<button type="button" class="qna"></button>
+				</div>
+				고객센터<a href="mailto:info@wannabit.io">info@wannabit.io</a> | <a href="tel:1670-9756">1670-9756</a><span>© wannabit Inc. All rights reserved.</span>
+			</footer>
+
+		</div><!-- app end -->
+
+
+		<script>
+			var customSelectBtn = $('.custam-select > button');
+			customSelectBtn.on('click', function(){
+				//customSelectBtn.removeClass('on');
+				//customSelectBtn.next().hide();
+				$(this).toggleClass('on');
+				$(this).next().toggle();
+			})
+		</script>
+	</body>
+</html>
